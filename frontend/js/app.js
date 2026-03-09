@@ -10,6 +10,7 @@ import { renderWeather, initWeather } from './pages/weather.js';
 import { renderMarket, initMarket } from './pages/market.js';
 import { renderAnalysis, initAnalysis } from './pages/analysis.js';
 import { renderCropDoctor, initCropDoctor } from './pages/cropDoctor.js';
+import { renderCarbon, initCarbon } from './pages/carbon.js';
 import { initVoice } from './voice.js';
 import { onLangChange } from './i18n.js';
 
@@ -22,6 +23,7 @@ const routes = {
     market: { render: renderMarket, init: initMarket },
     weather: { render: renderWeather, init: initWeather },
     cropDoctor: { render: renderCropDoctor, init: initCropDoctor },
+    carbon: { render: renderCarbon, init: initCarbon },
 };
 
 let currentPage = 'home';

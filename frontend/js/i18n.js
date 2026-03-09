@@ -415,6 +415,107 @@ const translations = {
     'common.north': { en: 'North', te: 'ఉత్తర', hi: 'उत्तर', mr: 'उत्तर' },
     'common.east': { en: 'East', te: 'తూర్పు', hi: 'पूर्व', mr: 'पूर्व' },
     'common.west': { en: 'West', te: 'పశ్చిమ', hi: 'पश्चिम', mr: 'पश्चिम' },
+
+    // ========== NAVBAR — CARBON ==========
+    'nav.carbon': {
+        en: '🌍 Carbon', te: '🌍 కార్బన్', hi: '🌍 कार्बन', mr: '🌍 कार्बन'
+    },
+
+    // ========== STATS ==========
+    'stats.carbonIPCC': {
+        en: 'IPCC Carbon Data', te: 'IPCC కార్బన్ డేటా', hi: 'IPCC कार्बन डेटा', mr: 'IPCC कार्बन डेटा'
+    },
+
+    // ========== FEATURE CARD ==========
+    'feature.carbon.title': {
+        en: 'Carbon Footprint Estimator', te: 'కార్బన్ ఫుట్‌ప్రింట్ అంచనా', hi: 'कार्बन फुटप्रिंट अनुमान', mr: 'कार्बन फूटप्रिंट अंदाज'
+    },
+    'feature.carbon.desc': {
+        en: 'Calculate your farm\'s carbon emissions using IPCC-sourced science. Get actionable reduction tips and see how you compare to national averages.',
+        te: 'IPCC-ఆధారిత సైన్స్ ఉపయోగించి మీ పొలం కార్బన్ ఉద్గారాలను లెక్కించండి.',
+        hi: 'IPCC-स्रोत विज्ञान का उपयोग करके अपने खेत के कार्बन उत्सर्जन की गणना करें।',
+        mr: 'IPCC-स्रोत विज्ञान वापरून तुमच्या शेताचे कार्बन उत्सर्जन मोजा.'
+    },
+
+    // ========== CARBON PAGE ==========
+    'carbon.title': {
+        en: '🌍 Carbon Footprint Estimator', te: '🌍 కార్బన్ ఫుట్‌ప్రింట్ అంచనా', hi: '🌍 कार्बन फुटप्रिंट अनुमान', mr: '🌍 कार्बन फूटप्रिंट अंदाज'
+    },
+    'carbon.subtitle': {
+        en: '100% IPCC-sourced emission factors — zero mock data. Deterministic calculations based on your inputs.',
+        te: '100% IPCC-ఆధారిత ఉద్గార కారకాలు — సున్నా మాక్ డేటా.',
+        hi: '100% IPCC-स्रोत उत्सर्जन कारक — शून्य मॉक डेटा।',
+        mr: '100% IPCC-स्रोत उत्सर्जन घटक — शून्य मॉक डेटा.'
+    },
+    'carbon.crop': {
+        en: 'Crop Type', te: 'పంట రకం', hi: 'फसल प्रकार', mr: 'पीक प्रकार'
+    },
+    'carbon.area': {
+        en: 'Farm Area (hectares)', te: 'పొలం విస్తీర్ణం (హెక్టార్లు)', hi: 'खेत क्षेत्र (हेक्टेयर)', mr: 'शेत क्षेत्र (हेक्टर)'
+    },
+    'carbon.fertilizer': {
+        en: 'Fertilizer Type', te: 'ఎరువు రకం', hi: 'उर्वरक प्रकार', mr: 'खत प्रकार'
+    },
+    'carbon.fert_qty': {
+        en: 'Fertilizer Quantity (kg/season)', te: 'ఎరువు పరిమాణం (కిలో/సీజన్)', hi: 'उर्वरक मात्रा (किग्रा/सीजन)', mr: 'खत प्रमाण (किलो/हंगाम)'
+    },
+    'carbon.irrigation': {
+        en: 'Irrigation Method', te: 'నీటి పారుదల పద్ధతి', hi: 'सिंचाई विधि', mr: 'सिंचन पद्धत'
+    },
+    'carbon.tillage': {
+        en: 'Tillage Practice', te: 'దుక్కి పద్ధతి', hi: 'जुताई पद्धति', mr: 'नांगरणी पद्धत'
+    },
+    'carbon.organic': {
+        en: 'Organic / Sustainable Practices', te: 'సేంద్రీయ / స్థిరమైన పద్ధతులు', hi: 'जैविक / टिकाऊ खेती प्रथाएं', mr: 'सेंद्रिय / शाश्वत पद्धती'
+    },
+    'carbon.calculate': {
+        en: '🌱 Calculate Carbon Footprint', te: '🌱 కార్బన్ ఫుట్‌ప్రింట్ లెక్కించండి', hi: '🌱 कार्बन फुटप्रिंट गणना करें', mr: '🌱 कार्बन फूटप्रिंट मोजा'
+    },
+    'carbon.calculating': {
+        en: 'Calculating...', te: 'లెక్కిస్తోంది...', hi: 'गणना हो रही है...', mr: 'गणना होत आहे...'
+    },
+    'carbon.result_title': {
+        en: '📊 Carbon Footprint Results', te: '📊 కార్బన్ ఫుట్‌ప్రింట్ ఫలితాలు', hi: '📊 कार्बन फुटप्रिंट परिणाम', mr: '📊 कार्बन फूटप्रिंट निकाल'
+    },
+    'carbon.total_emission': {
+        en: 'Total Emission', te: 'మొత్తం ఉద్గారాలు', hi: 'कुल उत्सर्जन', mr: 'एकूण उत्सर्जन'
+    },
+    'carbon.per_hectare': {
+        en: 'Per Hectare', te: 'హెక్టారుకు', hi: 'प्रति हेक्टेयर', mr: 'प्रति हेक्टर'
+    },
+    'carbon.net_emission': {
+        en: 'Net Emission (after offsets)', te: 'నికర ఉద్గారాలు (ఆఫ్‌సెట్ తర్వాత)', hi: 'शुद्ध उत्सर्जन (ऑफसेट के बाद)', mr: 'निव्वळ उत्सर्जन (ऑफसेट नंतर)'
+    },
+    'carbon.sequestration': {
+        en: 'Sequestration Offset', te: 'సీక్వెస్ట్రేషన్ ఆఫ్‌సెట్', hi: 'सीक्वेस्ट्रेशन ऑफसेट', mr: 'सिक्वेस्ट्रेशन ऑफसेट'
+    },
+    'carbon.rating': {
+        en: 'Emission Rating', te: 'ఉద్గార రేటింగ్', hi: 'उत्सर्जन रेटिंग', mr: 'उत्सर्जन रेटिंग'
+    },
+    'carbon.breakdown': {
+        en: 'Emission Breakdown', te: 'ఉద్గార విభజన', hi: 'उत्सर्जन विश्लेषण', mr: 'उत्सर्जन विभाजन'
+    },
+    'carbon.vs_india': {
+        en: 'vs India Average', te: 'భారత సగటుతో పోలిక', hi: 'भारत औसत से तुलना', mr: 'भारत सरासरीशी तुलना'
+    },
+    'carbon.vs_global': {
+        en: 'vs Global Average', te: 'ప్రపంచ సగటుతో పోలిక', hi: 'वैश्विक औसत से तुलना', mr: 'जागतिक सरासरीशी तुलना'
+    },
+    'carbon.trees_equivalent': {
+        en: 'Trees needed to absorb this', te: 'ఇది గ్రహించడానికి అవసరమైన చెట్లు', hi: 'इसे अवशोषित करने के लिए आवश्यक पेड़', mr: 'हे शोषण्यासाठी आवश्यक झाडे'
+    },
+    'carbon.car_equivalent': {
+        en: 'Equivalent car kilometres', te: 'సమాన కారు కిలోమీటర్లు', hi: 'समकक्ष कार किलोमीटर', mr: 'समतुल्य कार किलोमीटर'
+    },
+    'carbon.tips': {
+        en: 'Reduction Tips', te: 'తగ్గింపు చిట్కాలు', hi: 'कमी के उपाय', mr: 'कमी करण्याचे उपाय'
+    },
+    'carbon.sources': {
+        en: 'Science Behind the Numbers', te: 'సంఖ్యల వెనుక సైన్స్', hi: 'संख्याओं के पीछे का विज्ञान', mr: 'संख्यांमागील विज्ञान'
+    },
+    'carbon.recalculate': {
+        en: '🔄 Recalculate', te: '🔄 మళ్ళీ లెక్కించండి', hi: '🔄 पुनः गणना', mr: '🔄 पुनर्गणना'
+    },
 };
 
 // ============================================

@@ -260,6 +260,235 @@ FERTILIZER_EFFECTS = {
     },
 }
 
+# ============================================
+# CARBON EMISSION FACTORS (IPCC 2019 / FAO)
+# Source: IPCC 2019 Refinement, Vol 4, Ch 5 & 11
+# Units: kg CO2-equivalent per hectare per season
+# ============================================
+
+# Crop-specific emissions (kg CO2e/ha/season)
+# Includes: field emissions (CH4 for rice, N2O from soil),
+# energy for cultivation, residue decomposition
+# Source: IPCC 2006 GL Vol4 Ch5 (rice CH4), Ch11 (N2O)
+CROP_CARBON_EMISSIONS = {
+    'rice': {
+        'field_emission': 3800,      # CH4 from flooded paddies: ~1.3 kg CH4/ha/day x 120 days x 25 GWP = 3900, adjusted for intermittent flooding
+        'cultivation_energy': 350,    # Diesel for puddling, transplanting
+        'residue_decomposition': 180, # Straw decomposition
+        'total': 4330,
+        'source': 'IPCC 2006 Vol4 Ch5 Table 5.11 - Baseline EF 1.30 kg CH4/ha/day'
+    },
+    'wheat': {
+        'field_emission': 450,       # N2O from soil: ~1% of applied N (100kg N/ha) x 44/28 x 265 GWP
+        'cultivation_energy': 280,
+        'residue_decomposition': 120,
+        'total': 850,
+        'source': 'IPCC 2019 Vol4 Ch11 Table 11.1 - EF1 = 0.01 kg N2O-N/kg N'
+    },
+    'maize': {
+        'field_emission': 380,
+        'cultivation_energy': 300,
+        'residue_decomposition': 150,
+        'total': 830,
+        'source': 'IPCC 2019 Vol4 Ch11 - Direct N2O + energy use'
+    },
+    'cotton': {
+        'field_emission': 520,
+        'cultivation_energy': 420,
+        'residue_decomposition': 100,
+        'total': 1040,
+        'source': 'IPCC 2019 Vol4 Ch11 + high pesticide energy input'
+    },
+    'sugarcane': {
+        'field_emission': 600,
+        'cultivation_energy': 380,
+        'residue_decomposition': 250,
+        'total': 1230,
+        'source': 'IPCC 2019 Vol4 Ch11 + trash burning emissions'
+    },
+    'chickpea': {
+        'field_emission': 180,       # Legume - fixes N, lower emissions
+        'cultivation_energy': 150,
+        'residue_decomposition': 60,
+        'total': 390,
+        'source': 'IPCC 2019 Vol4 Ch11 - reduced EF for legumes'
+    },
+    'potato': {
+        'field_emission': 350,
+        'cultivation_energy': 320,
+        'residue_decomposition': 80,
+        'total': 750,
+        'source': 'IPCC 2019 Vol4 Ch11'
+    },
+    'tomato': {
+        'field_emission': 300,
+        'cultivation_energy': 280,
+        'residue_decomposition': 70,
+        'total': 650,
+        'source': 'IPCC 2019 Vol4 Ch11'
+    },
+    'banana': {
+        'field_emission': 250,
+        'cultivation_energy': 200,
+        'residue_decomposition': 180,
+        'total': 630,
+        'source': 'FAO 2017 - Banana carbon footprint study'
+    },
+    'mango': {
+        'field_emission': 150,
+        'cultivation_energy': 180,
+        'residue_decomposition': 80,
+        'total': 410,
+        'source': 'FAO perennial tree crop guidelines'
+    },
+    'coffee': {
+        'field_emission': 280,
+        'cultivation_energy': 350,
+        'residue_decomposition': 120,
+        'total': 750,
+        'source': 'IPCC 2019 + ICO coffee lifecycle data'
+    },
+    'default': {
+        'field_emission': 350,
+        'cultivation_energy': 280,
+        'residue_decomposition': 100,
+        'total': 730,
+        'source': 'IPCC 2019 Vol4 Ch11 - global average for annual crops'
+    }
+}
+
+# Fertilizer manufacturing + field emission factors (kg CO2e per kg of fertilizer)
+# Source: IPCC 2006 GL Vol4 Ch11 + IFA Fertilizer Industry Handbook 2018
+FERTILIZER_CARBON_FACTORS = {
+    'Urea': {
+        'manufacturing': 3.5,        # kg CO2e/kg - Haber-Bosch process + transport
+        'field_n2o': 2.3,            # 1% of 0.46 kg N per kg Urea x 44/28 x 265 GWP / kg
+        'total_per_kg': 5.8,
+        'source': 'IFA 2018 + IPCC 2019 Vol4 Ch11 EF1'
+    },
+    'DAP': {
+        'manufacturing': 2.8,
+        'field_n2o': 1.05,           # 18% N content
+        'total_per_kg': 3.85,
+        'source': 'IFA 2018 + IPCC EF for 18% N'
+    },
+    'MOP': {
+        'manufacturing': 0.58,       # Mining + processing only, no N
+        'field_n2o': 0.0,
+        'total_per_kg': 0.58,
+        'source': 'IFA 2018 - potash mining lifecycle'
+    },
+    'NPK': {
+        'manufacturing': 2.1,
+        'field_n2o': 0.99,           # 17% N content
+        'total_per_kg': 3.09,
+        'source': 'IFA 2018 + IPCC EF for 17% N'
+    },
+    'Compost': {
+        'manufacturing': 0.1,        # Minimal - local production
+        'field_n2o': 0.12,           # ~2% N, low emission
+        'total_per_kg': 0.22,
+        'source': 'IPCC 2019 Vol4 Ch11 Table 11.1 - organic amendments'
+    },
+    'Zinc Sulphate': {
+        'manufacturing': 1.2,
+        'field_n2o': 0.0,
+        'total_per_kg': 1.2,
+        'source': 'Industrial LCA data'
+    },
+    'SSP': {
+        'manufacturing': 0.95,
+        'field_n2o': 0.0,
+        'total_per_kg': 0.95,
+        'source': 'IFA 2018 - Single Super Phosphate'
+    },
+    'default': {
+        'manufacturing': 2.0,
+        'field_n2o': 1.0,
+        'total_per_kg': 3.0,
+        'source': 'IPCC default for mixed fertilizer'
+    }
+}
+
+# Irrigation method emissions (kg CO2e/ha/season)
+# Source: IPCC 2006 GL + Indian Agricultural Research Institute studies
+IRRIGATION_CARBON_FACTORS = {
+    'Flood': {
+        'energy_emission': 800,      # Pumping large volumes
+        'methane_bonus': 400,        # Additional CH4 from waterlogging
+        'total': 1200,
+        'source': 'IPCC 2006 Vol4 Ch5 + IARI pumping energy data'
+    },
+    'Sprinkler': {
+        'energy_emission': 350,
+        'methane_bonus': 0,
+        'total': 350,
+        'source': 'IARI irrigation energy benchmarks'
+    },
+    'Drip': {
+        'energy_emission': 150,
+        'methane_bonus': 0,
+        'total': 150,
+        'source': 'IARI - most efficient method'
+    },
+    'Rainfed': {
+        'energy_emission': 0,
+        'methane_bonus': 0,
+        'total': 0,
+        'source': 'Zero pumping energy'
+    },
+    'default': {
+        'energy_emission': 400,
+        'methane_bonus': 100,
+        'total': 500,
+        'source': 'Indian average'
+    }
+}
+
+# Tillage practice emissions (kg CO2e/ha)
+# Source: FAO Conservation Agriculture guidelines + IPCC
+TILLAGE_CARBON_FACTORS = {
+    'Conventional': {
+        'fuel_emission': 180,        # Multiple passes with tractor
+        'soil_carbon_loss': 250,     # Breaking soil releases stored C
+        'total': 430,
+        'source': 'FAO CA guidelines + IPCC 2019 Vol4 Ch5'
+    },
+    'Reduced': {
+        'fuel_emission': 90,
+        'soil_carbon_loss': 120,
+        'total': 210,
+        'source': 'FAO - 50% reduction from conventional'
+    },
+    'Zero': {
+        'fuel_emission': 30,         # Only direct seeding
+        'soil_carbon_loss': 0,       # Preserves soil carbon
+        'total': 30,
+        'source': 'FAO Zero-till guidelines'
+    },
+    'default': {
+        'fuel_emission': 180,
+        'soil_carbon_loss': 250,
+        'total': 430,
+        'source': 'Assumed conventional for India'
+    }
+}
+
+# Carbon sequestration offsets (kg CO2e/ha/year SAVED)
+# Source: IPCC 2019 Vol4 Ch5 Table 5.5 + FAO
+CARBON_SEQUESTRATION = {
+    'organic_farming': 500,          # Increased soil organic carbon
+    'cover_crops': 350,              # Green manuring between seasons
+    'agroforestry': 800,             # Trees on farmland
+    'crop_residue_retention': 200,   # Not burning stubble
+    'biochar_application': 600,      # Charcoal-based soil amendment
+    'mulching': 150,                 # Moisture + carbon retention
+}
+
+# India national average for comparison
+INDIA_AVG_CARBON_PER_HECTARE = 2500  # kg CO2e/ha/year (INCCA 2010 report)
+GLOBAL_AVG_CARBON_PER_HECTARE = 3200 # kg CO2e/ha/year (FAO 2019 global avg)
+
 SOIL_REMEDIATION = {
     'high_chemical_load': [
         'Apply 5-10 tonnes/hectare of farmyard manure (FYM) to rebuild soil biology',

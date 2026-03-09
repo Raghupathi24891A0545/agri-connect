@@ -58,6 +58,17 @@ export async function getSoilAnalysis(data) {
   });
 }
 
+export async function getCarbonEstimate(data) {
+  return apiFetch('/api/carbon-estimate', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function getCarbonFactors() {
+  return apiFetch('/api/carbon-factors');
+}
+
 // ============================================
 // Disease Detection API (Image Detection Backend)
 // ============================================
