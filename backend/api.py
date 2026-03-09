@@ -5,7 +5,11 @@ from weather import get_weather, get_forecast
 from config import (
     MARKET_LOCATIONS, VEGETABLE_PRICES, CROP_PRICES,
     PESTICIDE_EFFECTS, FERTILIZER_EFFECTS,
-    SOIL_REMEDIATION
+    SOIL_REMEDIATION,
+    CROP_CARBON_EMISSIONS, FERTILIZER_CARBON_FACTORS,
+    IRRIGATION_CARBON_FACTORS, TILLAGE_CARBON_FACTORS,
+    CARBON_SEQUESTRATION,
+    INDIA_AVG_CARBON_PER_HECTARE, GLOBAL_AVG_CARBON_PER_HECTARE
 )
 import random
 import math
@@ -30,7 +34,9 @@ def home():
             "/api/predict/crop": "POST - Predict best crop",
             "/api/predict/fertilizer": "POST - Predict best fertilizer",
             "/api/market-prices": "POST - Market prices for crops",
-            "/api/soil-analysis": "POST - Soil health analysis"
+            "/api/soil-analysis": "POST - Soil health analysis",
+            "/api/carbon-estimate": "POST - Carbon footprint estimation (IPCC-sourced)",
+            "/api/carbon-factors": "GET - IPCC emission factor reference data"
         }
     })
 
@@ -399,6 +405,241 @@ def get_soil_data():
         return jsonify({"error": f"Server error: {str(e)}"}), 500
 
 # ============================================
+# CARBON FOOTPRINT ESTIMATION API
+# All emission factors from IPCC 2019 / FAO — zero mock data
+# ============================================
+@app.route("/api/carbon-estimate", methods=["POST"])
+def carbon_estimate():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided. Send JSON body"}), 400
+
+        required = ["crop_type", "area_hectares", "fertilizer_type",
+                    "fertilizer_qty_kg", "irrigation_method", "tillage_practice"]
+        missing = [f for f in required if f not in data]
+        if missing:
+            return jsonify({
+                "error": f"Missing fields: {missing}",
+                "required": required,
+                "example": {
+                    "crop_type": "rice",
+                    "area_hectares": 2.5,
+                    "fertilizer_type": "Urea",
+                    "fertilizer_qty_kg": 100,
+                    "irrigation_method": "Flood",
+                    "tillage_practice": "Conventional",
+                    "organic_practices": ["crop_residue_retention"]
+                }
+            }), 400
+
+        crop_type = str(data["crop_type"]).strip().lower()
+        area = float(data["area_hectares"])
+        fert_type = str(data["fertilizer_type"]).strip()
+        fert_qty = float(data["fertilizer_qty_kg"])
+        irrigation = str(data["irrigation_method"]).strip()
+        tillage = str(data["tillage_practice"]).strip()
+        organic_practices = data.get("organic_practices", [])
+        if isinstance(organic_practices, str):
+            organic_practices = [p.strip() for p in organic_practices.split(",") if p.strip()]
+
+        if area <= 0:
+            return jsonify({"error": "area_hectares must be greater than 0"}), 400
+        if fert_qty < 0:
+            return jsonify({"error": "fertilizer_qty_kg must be non-negative"}), 400
+
+        # --- Lookup emission factors (use 'default' if not found) ---
+        crop_ef = CROP_CARBON_EMISSIONS.get(crop_type, CROP_CARBON_EMISSIONS['default'])
+        fert_ef = FERTILIZER_CARBON_FACTORS.get(fert_type, FERTILIZER_CARBON_FACTORS['default'])
+        irr_ef = IRRIGATION_CARBON_FACTORS.get(irrigation, IRRIGATION_CARBON_FACTORS['default'])
+        till_ef = TILLAGE_CARBON_FACTORS.get(tillage, TILLAGE_CARBON_FACTORS['default'])
+
+        # --- Deterministic calculation (inputs x IPCC factors) ---
+        crop_emissions = round(crop_ef['total'] * area, 2)
+        fertilizer_emissions = round(fert_ef['total_per_kg'] * fert_qty, 2)
+        irrigation_emissions = round(irr_ef['total'] * area, 2)
+        tillage_emissions = round(till_ef['total'] * area, 2)
+
+        total_emission = round(
+            crop_emissions + fertilizer_emissions + irrigation_emissions + tillage_emissions, 2
+        )
+
+        # --- Sequestration offsets ---
+        sequestration_offset = 0.0
+        sequestration_breakdown = {}
+        for practice in organic_practices:
+            offset_per_ha = CARBON_SEQUESTRATION.get(practice, 0)
+            offset_total = round(offset_per_ha * area, 2)
+            sequestration_breakdown[practice] = offset_total
+            sequestration_offset += offset_total
+        sequestration_offset = round(sequestration_offset, 2)
+
+        net_emission = round(max(0.0, total_emission - sequestration_offset), 2)
+        per_hectare_emission = round(net_emission / area, 2)
+
+        # --- Comparison with benchmarks ---
+        india_total = round(INDIA_AVG_CARBON_PER_HECTARE * area, 2)
+        global_total = round(GLOBAL_AVG_CARBON_PER_HECTARE * area, 2)
+
+        vs_india_pct = round(((net_emission - india_total) / india_total) * 100, 1) if india_total else 0
+        vs_global_pct = round(((net_emission - global_total) / global_total) * 100, 1) if global_total else 0
+
+        # --- Rating (per-hectare net emission) ---
+        if per_hectare_emission < 1000:
+            rating = 'A'
+            rating_label = 'Excellent — Very Low Emissions'
+            rating_color = '#22C55E'
+        elif per_hectare_emission < 2000:
+            rating = 'B'
+            rating_label = 'Good — Below Average'
+            rating_color = '#84CC16'
+        elif per_hectare_emission < 3000:
+            rating = 'C'
+            rating_label = 'Average — Near National Benchmark'
+            rating_color = '#F59E0B'
+        elif per_hectare_emission < 4000:
+            rating = 'D'
+            rating_label = 'High — Above National Average'
+            rating_color = '#F97316'
+        else:
+            rating = 'E'
+            rating_label = 'Very High — Immediate Action Needed'
+            rating_color = '#EF4444'
+
+        # --- Equivalences ---
+        equivalent_trees = round(net_emission / 22, 0)   # ~22 kg CO2/tree/year (US Forest Service)
+        equivalent_car_km = round(net_emission / 0.21, 0) # ~0.21 kg CO2/km average petrol car
+
+        # --- Reduction tips (based on actual inputs) ---
+        tips = []
+        if irrigation == 'Flood':
+            drip_saving = round((irr_ef['total'] - IRRIGATION_CARBON_FACTORS['Drip']['total']) * area, 0)
+            tips.append({
+                "title": "Switch to Drip Irrigation",
+                "detail": f"Switching from Flood to Drip irrigation can save ~{drip_saving:,.0f} kg CO2e/season for your {area} ha farm.",
+                "saving_kg_co2e": drip_saving,
+                "source": "IARI irrigation energy benchmarks"
+            })
+        if irrigation == 'Sprinkler':
+            drip_saving = round((irr_ef['total'] - IRRIGATION_CARBON_FACTORS['Drip']['total']) * area, 0)
+            tips.append({
+                "title": "Upgrade to Drip Irrigation",
+                "detail": f"Drip irrigation uses 57% less energy than sprinkler. Potential saving: ~{drip_saving:,.0f} kg CO2e.",
+                "saving_kg_co2e": drip_saving,
+                "source": "IARI irrigation energy benchmarks"
+            })
+        if tillage == 'Conventional':
+            zerotill_saving = round((till_ef['total'] - TILLAGE_CARBON_FACTORS['Zero']['total']) * area, 0)
+            tips.append({
+                "title": "Adopt Zero-Till Farming",
+                "detail": f"Zero tillage preserves soil carbon and reduces fuel use. Potential saving: ~{zerotill_saving:,.0f} kg CO2e.",
+                "saving_kg_co2e": zerotill_saving,
+                "source": "FAO Zero-till guidelines"
+            })
+        if fert_type in ('Urea', 'DAP', 'NPK') and 'Compost' not in str(organic_practices):
+            compost_saving = round((fert_ef['total_per_kg'] - FERTILIZER_CARBON_FACTORS['Compost']['total_per_kg']) * fert_qty * 0.5, 0)
+            tips.append({
+                "title": "Replace 50% Chemical Fertilizer with Compost",
+                "detail": f"Substituting half your fertilizer with compost reduces manufacturing + field N2O emissions by ~{compost_saving:,.0f} kg CO2e.",
+                "saving_kg_co2e": compost_saving,
+                "source": "IPCC 2019 Vol4 Ch11 + IFA 2018"
+            })
+        if 'crop_residue_retention' not in organic_practices:
+            retention_saving = round(CARBON_SEQUESTRATION['crop_residue_retention'] * area, 0)
+            tips.append({
+                "title": "Retain Crop Residues Instead of Burning",
+                "detail": f"Incorporating stubble instead of burning can sequester ~{retention_saving:,.0f} kg CO2e/season.",
+                "saving_kg_co2e": retention_saving,
+                "source": "IPCC 2019 Vol4 Ch5 Table 5.5"
+            })
+        if 'cover_crops' not in organic_practices:
+            cover_saving = round(CARBON_SEQUESTRATION['cover_crops'] * area, 0)
+            tips.append({
+                "title": "Plant Cover Crops Between Seasons",
+                "detail": f"Green manuring with leguminous cover crops can fix ~{cover_saving:,.0f} kg CO2e/season of atmospheric carbon.",
+                "saving_kg_co2e": cover_saving,
+                "source": "FAO Conservation Agriculture + IPCC 2019 Vol4 Ch5"
+            })
+
+        # --- Sources cited ---
+        sources = [
+            crop_ef['source'],
+            fert_ef['source'],
+            irr_ef['source'],
+            till_ef['source'],
+        ]
+        sources = list(dict.fromkeys(sources))  # deduplicate while preserving order
+
+        return jsonify({
+            "crop_type": crop_type,
+            "area_hectares": area,
+            "fertilizer_type": fert_type,
+            "fertilizer_qty_kg": fert_qty,
+            "irrigation_method": irrigation,
+            "tillage_practice": tillage,
+            "organic_practices": organic_practices,
+            "breakdown": {
+                "crop_emissions": crop_emissions,
+                "fertilizer_emissions": fertilizer_emissions,
+                "irrigation_emissions": irrigation_emissions,
+                "tillage_emissions": tillage_emissions,
+            },
+            "total_emission_kg_co2e": total_emission,
+            "sequestration_offset": sequestration_offset,
+            "sequestration_breakdown": sequestration_breakdown,
+            "net_emission": net_emission,
+            "per_hectare_emission": per_hectare_emission,
+            "comparison": {
+                "india_avg_total": india_total,
+                "india_avg_per_ha": INDIA_AVG_CARBON_PER_HECTARE,
+                "global_avg_total": global_total,
+                "global_avg_per_ha": GLOBAL_AVG_CARBON_PER_HECTARE,
+                "vs_india_pct": vs_india_pct,
+                "vs_global_pct": vs_global_pct,
+                "vs_india_label": f"{'Better' if vs_india_pct < 0 else 'Worse'} than India avg by {abs(vs_india_pct)}%",
+                "vs_global_label": f"{'Better' if vs_global_pct < 0 else 'Worse'} than Global avg by {abs(vs_global_pct)}%"
+            },
+            "rating": rating,
+            "rating_label": rating_label,
+            "rating_color": rating_color,
+            "equivalent_trees": int(equivalent_trees),
+            "equivalent_car_km": int(equivalent_car_km),
+            "reduction_tips": tips,
+            "sources": sources,
+            "methodology": "Emissions = (Crop EF x Area) + (Fertilizer EF x Qty) + (Irrigation EF x Area) + (Tillage EF x Area) - Sequestration Offsets. All factors from IPCC 2019 / FAO / IFA 2018."
+        })
+
+    except ValueError as e:
+        return jsonify({"error": f"Invalid number format: {str(e)}"}), 400
+    except Exception as e:
+        return jsonify({"error": f"Server error: {str(e)}"}), 500
+
+
+# ============================================
+# CARBON FACTORS REFERENCE DATA
+# Returns all IPCC emission factor constants — no computation
+# ============================================
+@app.route("/api/carbon-factors", methods=["GET"])
+def carbon_factors():
+    return jsonify({
+        "description": "IPCC 2019 / FAO emission factor reference data used for carbon footprint estimation",
+        "crop_carbon_emissions": CROP_CARBON_EMISSIONS,
+        "fertilizer_carbon_factors": FERTILIZER_CARBON_FACTORS,
+        "irrigation_carbon_factors": IRRIGATION_CARBON_FACTORS,
+        "tillage_carbon_factors": TILLAGE_CARBON_FACTORS,
+        "carbon_sequestration_offsets": CARBON_SEQUESTRATION,
+        "benchmarks": {
+            "india_avg_kg_co2e_per_ha": INDIA_AVG_CARBON_PER_HECTARE,
+            "global_avg_kg_co2e_per_ha": GLOBAL_AVG_CARBON_PER_HECTARE,
+            "sources": [
+                "INCCA 2010 - India National Greenhouse Gas Inventory",
+                "FAO 2019 - Global agricultural emissions data"
+            ]
+        }
+    })
+
+
+# ============================================
 # START SERVER
 # ============================================
 if __name__ == "__main__":
@@ -414,6 +655,8 @@ if __name__ == "__main__":
     print("  POST http://127.0.0.1:5000/api/predict/fertilizer")
     print("  POST http://127.0.0.1:5000/api/market-prices")
     print("  POST http://127.0.0.1:5000/api/soil-analysis")
+    print("  POST http://127.0.0.1:5000/api/carbon-estimate")
+    print("  GET  http://127.0.0.1:5000/api/carbon-factors")
     print("=" * 60 + "\n")
 
     app.run(debug=True, port=5000)

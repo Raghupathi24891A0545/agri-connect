@@ -47,6 +47,10 @@ export function renderHome() {
         <div class="stat-value">🎤</div>
         <div class="stat-label">${t('stats.voiceInput')}</div>
       </div>
+      <div class="stat-item">
+        <div class="stat-value">🌍</div>
+        <div class="stat-label">${t('stats.carbonIPCC')}</div>
+      </div>
     </div>
 
     <section class="features-section">
@@ -88,6 +92,12 @@ export function renderHome() {
           <div class="feature-icon">🩺</div>
           <h3>${t('feature.cropDoctor.title')}</h3>
           <p>${t('feature.cropDoctor.desc')}</p>
+        </div>
+
+        <div class="feature-card" data-navigate="carbon">
+          <div class="feature-icon">🌍</div>
+          <h3>${t('feature.carbon.title')}</h3>
+          <p>${t('feature.carbon.desc')}</p>
         </div>
 
         <div class="feature-card" data-navigate="analysis">
