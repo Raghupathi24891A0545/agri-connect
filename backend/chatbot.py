@@ -14,6 +14,11 @@ def detect_language(text):
     """
     Detect script/language from Unicode ranges.
     Returns: 'te', 'hi', 'mr', or 'en'
+
+    Note: Hindi and Marathi both use Devanagari script (U+0900–U+097F), so this
+    function cannot distinguish between them based on script alone. Marathi text
+    will be detected as 'hi'. Use the lang_hint parameter in get_reply() to
+    explicitly set 'mr' when the interface language is Marathi.
     """
     for ch in text:
         cp = ord(ch)

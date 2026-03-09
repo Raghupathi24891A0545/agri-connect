@@ -2190,15 +2190,12 @@ h1, h2, h3, h4, h5 {
 .scheme-apply-btn { flex: 1; text-align: center; text-decoration: none; }
 .scheme-expand-btn { flex-shrink: 0; }
 
-/* Default: hide details, show on expand */
-.scheme-card:not(.expanded) .scheme-details,
-.scheme-card:not(.expanded) .scheme-benefit { display: none; }
-.scheme-card.expanded .scheme-details,
-.scheme-card.expanded .scheme-benefit { display: flex; }
+/* Scheme benefit is always visible; scheme details are shown on expand */
+.scheme-card:not(.expanded) .scheme-details { display: none; }
+.scheme-card.expanded .scheme-details { display: flex; }
+/* Description and benefit always visible */
+.scheme-card .scheme-description { display: block; }
 .scheme-card .scheme-benefit { display: block; }
-/* Always show description and benefit */
-.scheme-card .scheme-description { display: block !important; }
-.scheme-card .scheme-benefit { display: block !important; }
 
 /* ============================================
    MOBILE BOTTOM NAV (screens < 640px)

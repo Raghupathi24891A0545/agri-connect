@@ -121,7 +121,7 @@ async function sendMessage() {
 
   } catch (err) {
     removeTyping(typingId);
-    appendMessage('bot', '❌ Could not reach the server. Please make sure the backend is running at http://127.0.0.1:5000');
+    appendMessage('bot', '❌ Could not reach the server. Please make sure the backend is running at ' + API_BASE);
   }
 }
 

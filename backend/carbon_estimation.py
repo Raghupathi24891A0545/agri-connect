@@ -194,7 +194,9 @@ def calculate_carbon(
     if practices is None:
         practices = []
 
-    area = max(0.01, float(area_hectares))
+    area = float(area_hectares)
+    if area <= 0:
+        raise ValueError(f"area_hectares must be greater than 0, got {area}")
     fert_qty = max(0.0, float(fertilizer_qty_kg))
 
     crop_key = crop.lower().replace(' ', '_').replace('-', '_')

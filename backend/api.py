@@ -244,12 +244,13 @@ def market_prices():
         #   - Major urban mandis typically trade 5–15% above MSP
         #   - Secondary markets trade at or slightly below MSP
         #   - Distance from source affects price by ~2–5%
+        # Spread: index 0 = largest/primary mandi (highest price), last = smallest
+        PRICE_SPREAD_RANGE = 0.26   # Total spread from min to max (−8% to +18% of MSP)
+        PRICE_SPREAD_OFFSET = 0.08  # Shift spread so smallest mandi is −8% of MSP
         markets = []
         num_markets = len(markets_list)
         for i, m in enumerate(markets_list):
-            # Deterministic index-based spread (no randomness)
-            # Spread ranges from -8% to +18% based on market position
-            spread_pct = (i / max(num_markets - 1, 1)) * 0.26 - 0.08  # -8% to +18%
+            spread_pct = (i / max(num_markets - 1, 1)) * PRICE_SPREAD_RANGE - PRICE_SPREAD_OFFSET
             price = round(base_price * (1 + spread_pct), 2)
             # Distance estimate based on city size (first market = closest)
             distance = round(5 + i * (40 / max(num_markets - 1, 1)), 1)
