@@ -286,3 +286,304 @@ SOIL_REMEDIATION = {
         'Avoid burning crop stubble — incorporate it into soil instead',
     ],
 }
+
+# ============================================
+# CROP CALENDAR — Region × Season × Crop
+# ============================================
+CROP_CALENDAR = {
+    'rice': {
+        'South': {
+            'Kharif': {'sow': 'Jun 15 – Jul 15', 'harvest': 'Nov – Dec'},
+            'Rabi':   {'sow': 'Dec – Jan',        'harvest': 'Apr – May'},
+        },
+        'North': {
+            'Kharif': {'sow': 'Jun – Jul',         'harvest': 'Oct – Nov'},
+        },
+        'East': {
+            'Kharif': {'sow': 'Jun – Jul',         'harvest': 'Oct – Nov'},
+            'Rabi':   {'sow': 'Nov – Dec',         'harvest': 'Mar – Apr'},
+        },
+        'West': {
+            'Kharif': {'sow': 'Jun 15 – Jul 15',  'harvest': 'Nov – Dec'},
+        },
+    },
+    'wheat': {
+        'North': {
+            'Rabi': {'sow': 'Nov 1 – Dec 15', 'harvest': 'Mar – Apr'},
+        },
+        'Central': {
+            'Rabi': {'sow': 'Nov – Dec',       'harvest': 'Mar – Apr'},
+        },
+        'South': {
+            'Rabi': {'sow': 'Nov 15 – Dec 15', 'harvest': 'Mar – Apr'},
+        },
+        'East': {
+            'Rabi': {'sow': 'Nov – Dec',       'harvest': 'Feb – Mar'},
+        },
+    },
+    'maize': {
+        'North': {
+            'Kharif': {'sow': 'Jun – Jul',     'harvest': 'Sep – Oct'},
+            'Rabi':   {'sow': 'Oct – Nov',     'harvest': 'Feb – Mar'},
+        },
+        'South': {
+            'Kharif': {'sow': 'Jun – Jul',     'harvest': 'Sep – Oct'},
+            'Rabi':   {'sow': 'Oct – Nov',     'harvest': 'Feb – Mar'},
+            'Zaid':   {'sow': 'Jan – Feb',     'harvest': 'May – Jun'},
+        },
+        'East': {
+            'Kharif': {'sow': 'Jun – Jul',     'harvest': 'Sep – Oct'},
+        },
+        'West': {
+            'Kharif': {'sow': 'Jun – Jul',     'harvest': 'Sep – Oct'},
+            'Rabi':   {'sow': 'Nov – Dec',     'harvest': 'Mar – Apr'},
+        },
+    },
+    'cotton': {
+        'North': {
+            'Kharif': {'sow': 'Apr – May',     'harvest': 'Oct – Jan'},
+        },
+        'South': {
+            'Kharif': {'sow': 'May – Jun',     'harvest': 'Nov – Feb'},
+        },
+        'Central': {
+            'Kharif': {'sow': 'May – Jun',     'harvest': 'Oct – Jan'},
+        },
+        'West': {
+            'Kharif': {'sow': 'May – Jun',     'harvest': 'Oct – Jan'},
+        },
+    },
+    'sugarcane': {
+        'North': {
+            'Rabi': {'sow': 'Feb – Mar',       'harvest': 'Dec – Mar (14–16 months)'},
+        },
+        'South': {
+            'Kharif': {'sow': 'Jun – Aug',     'harvest': 'Dec – Apr (14–18 months)'},
+        },
+        'West': {
+            'Rabi': {'sow': 'Oct – Nov',       'harvest': 'Oct – Jan (12 months)'},
+        },
+    },
+    'chickpea': {
+        'North': {
+            'Rabi': {'sow': 'Oct 15 – Nov 15', 'harvest': 'Feb – Mar'},
+        },
+        'Central': {
+            'Rabi': {'sow': 'Oct – Nov',        'harvest': 'Feb – Mar'},
+        },
+        'South': {
+            'Rabi': {'sow': 'Oct – Nov',        'harvest': 'Jan – Feb'},
+        },
+    },
+    'tomato': {
+        'North': {
+            'Rabi':   {'sow': 'Oct – Nov (nursery)', 'harvest': 'Jan – Mar'},
+            'Kharif': {'sow': 'Jun – Jul (nursery)', 'harvest': 'Aug – Oct'},
+        },
+        'South': {
+            'Kharif': {'sow': 'Jun – Jul',     'harvest': 'Aug – Nov'},
+            'Rabi':   {'sow': 'Oct – Nov',     'harvest': 'Dec – Feb'},
+            'Zaid':   {'sow': 'Jan – Feb',     'harvest': 'Apr – Jun'},
+        },
+        'East': {
+            'Rabi': {'sow': 'Oct – Nov',       'harvest': 'Jan – Mar'},
+        },
+        'West': {
+            'Rabi': {'sow': 'Oct – Nov',       'harvest': 'Jan – Mar'},
+            'Zaid': {'sow': 'Jan – Feb',       'harvest': 'Apr – Jun'},
+        },
+    },
+    'potato': {
+        'North': {
+            'Rabi': {'sow': 'Oct – Nov',       'harvest': 'Feb – Mar'},
+        },
+        'East': {
+            'Rabi': {'sow': 'Oct – Nov',       'harvest': 'Jan – Feb'},
+        },
+        'South': {
+            'Rabi': {'sow': 'Nov – Dec',       'harvest': 'Feb – Mar'},
+        },
+    },
+    'onion': {
+        'North': {
+            'Rabi': {'sow': 'Oct – Nov (nursery)', 'harvest': 'Mar – May'},
+        },
+        'South': {
+            'Kharif': {'sow': 'Jun – Jul',     'harvest': 'Sep – Oct'},
+            'Rabi':   {'sow': 'Oct – Dec',     'harvest': 'Feb – Apr'},
+        },
+        'West': {
+            'Rabi': {'sow': 'Oct – Nov',       'harvest': 'Feb – Apr'},
+        },
+    },
+    'soybean': {
+        'North': {
+            'Kharif': {'sow': 'Jun 20 – Jul 15', 'harvest': 'Sep – Oct'},
+        },
+        'Central': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Sep – Oct'},
+        },
+        'West': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Sep – Oct'},
+        },
+    },
+    'groundnut': {
+        'South': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Oct – Nov'},
+            'Rabi':   {'sow': 'Nov – Dec',       'harvest': 'Mar – Apr'},
+        },
+        'North': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Oct – Nov'},
+        },
+        'West': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Sep – Oct'},
+        },
+    },
+    'mustard': {
+        'North': {
+            'Rabi': {'sow': 'Oct – Nov',         'harvest': 'Feb – Mar'},
+        },
+        'Central': {
+            'Rabi': {'sow': 'Oct – Nov',         'harvest': 'Feb – Mar'},
+        },
+        'East': {
+            'Rabi': {'sow': 'Oct – Nov',         'harvest': 'Feb – Mar'},
+        },
+    },
+    'sunflower': {
+        'South': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Sep – Oct'},
+            'Rabi':   {'sow': 'Oct – Nov',       'harvest': 'Feb – Mar'},
+        },
+        'North': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': 'Sep – Oct'},
+            'Rabi':   {'sow': 'Jan – Feb',       'harvest': 'Apr – May'},
+        },
+    },
+    'banana': {
+        'South': {
+            'Kharif': {'sow': 'May – Jun',       'harvest': '11–14 months after planting'},
+        },
+        'West': {
+            'Kharif': {'sow': 'Jun – Jul',       'harvest': '11–14 months after planting'},
+        },
+    },
+    'mango': {
+        'South': {
+            'Rabi': {'sow': 'Dec – Jan (grafts)','harvest': 'Apr – Jun (3–5 years after planting)'},
+        },
+        'North': {
+            'Rabi': {'sow': 'Jan – Feb (grafts)','harvest': 'May – Jul (3–5 years after planting)'},
+        },
+    },
+}
+
+# ============================================
+# GOVERNMENT SCHEMES
+# ============================================
+GOVT_SCHEMES = [
+    {
+        'id': 'pm_kisan',
+        'name': 'PM-KISAN',
+        'full_name': 'Pradhan Mantri Kisan Samman Nidhi',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare',
+        'description': 'Direct income support of ₹6,000 per year to all land-holding farmer families, paid in 3 equal installments of ₹2,000 every 4 months.',
+        'benefit_amount': '₹6,000/year (₹2,000 × 3 installments)',
+        'eligibility': 'All land-holding farmer families with cultivable land. Excludes institutional landholders, income taxpayers, pensioners with ₹10,000+/month pension.',
+        'how_to_apply': '1. Visit pmkisan.gov.in  2. Click "New Farmer Registration"  3. Enter Aadhaar number and bank details  4. State Agriculture Department verifies',
+        'website': 'https://pmkisan.gov.in',
+        'category': 'Income Support',
+        'icon': '💰',
+    },
+    {
+        'id': 'pmfby',
+        'name': 'PMFBY',
+        'full_name': 'Pradhan Mantri Fasal Bima Yojana',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare',
+        'description': 'Comprehensive crop insurance scheme covering yield losses due to natural calamities, pests, and diseases.',
+        'benefit_amount': 'Full insured sum for crop loss. Premium: 1.5% for Rabi, 2% for Kharif, 5% for commercial/horticulture',
+        'eligibility': 'All farmers growing notified crops. Compulsory for loanee farmers, voluntary for others.',
+        'how_to_apply': '1. Enroll at nearest Common Service Centre (CSC) or bank  2. Last date: 10 days before sowing  3. Submit land records, Aadhaar, and bank details',
+        'website': 'https://pmfby.gov.in',
+        'category': 'Crop Insurance',
+        'icon': '🛡️',
+    },
+    {
+        'id': 'kcc',
+        'name': 'KCC',
+        'full_name': 'Kisan Credit Card',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare / NABARD',
+        'description': 'Provides farmers with affordable short-term credit for agricultural needs, post-harvest expenses, and allied activities.',
+        'benefit_amount': 'Credit up to ₹3 lakh at 4% interest per annum (with 3% interest subvention from Government)',
+        'eligibility': 'All farmers, tenant farmers, sharecroppers, SHGs/JLGs engaged in agriculture.',
+        'how_to_apply': '1. Visit nearest bank or cooperative  2. Fill KCC application form  3. Submit land documents, ID proof  4. Card issued within 14 working days',
+        'website': 'https://www.nabard.org/content.aspx?id=596',
+        'category': 'Credit',
+        'icon': '💳',
+    },
+    {
+        'id': 'soil_health_card',
+        'name': 'Soil Health Card Scheme',
+        'full_name': 'Soil Health Card Scheme',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare',
+        'description': 'Provides free soil health cards to farmers with information on nutrient status and recommendations for fertilizer dosage.',
+        'benefit_amount': 'Free soil testing and health card. Nutrient management advice to reduce fertilizer cost by 10–20%.',
+        'eligibility': 'All farmers across India. Soil testing done every 2 years.',
+        'how_to_apply': '1. Contact local Krishi Vigyan Kendra (KVK) or Agriculture Department  2. Provide soil sample from farm  3. Card issued within 3 months',
+        'website': 'https://soilhealth.dac.gov.in',
+        'category': 'Soil Health',
+        'icon': '🧪',
+    },
+    {
+        'id': 'pm_kusum',
+        'name': 'PM-KUSUM',
+        'full_name': 'Pradhan Mantri Kisan Urja Suraksha evam Utthaan Mahabhiyan',
+        'ministry': 'Ministry of New and Renewable Energy',
+        'description': 'Scheme to provide solar pumps to farmers and install solar power plants on barren/fallow land to generate additional income.',
+        'benefit_amount': 'Subsidy up to 60% on solar pump installation (30% from Centre, 30% from State). Farmer pays only 10% after bank loan.',
+        'eligibility': 'Individual farmers, cooperatives, panchayats, FPOs. Farmers with land near transmission lines for grid-connected plants.',
+        'how_to_apply': '1. Apply through State Nodal Agency (SNA) or DISCOM  2. Visit state agriculture/energy department website  3. Submit land documents and Aadhaar',
+        'website': 'https://mnre.gov.in/solar/schemes',
+        'category': 'Renewable Energy',
+        'icon': '☀️',
+    },
+    {
+        'id': 'e_nam',
+        'name': 'e-NAM',
+        'full_name': 'National Agriculture Market',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare / SFAC',
+        'description': 'Pan-India electronic trading portal for agricultural commodities, connecting farmers directly with buyers to get better prices.',
+        'benefit_amount': 'Access to pan-India buyers. Average 5–10% better price realization. Zero trading commission for farmers.',
+        'eligibility': 'All farmers in states with integrated mandis. Currently 1,000+ mandis across 18 states integrated.',
+        'how_to_apply': '1. Register at enam.gov.in with Aadhaar and bank details  2. Get quality assay done at mandi lab  3. Upload produce and receive bids from buyers',
+        'website': 'https://enam.gov.in',
+        'category': 'Market Access',
+        'icon': '🏪',
+    },
+    {
+        'id': 'pkvy',
+        'name': 'PKVY',
+        'full_name': 'Paramparagat Krishi Vikas Yojana',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare',
+        'description': 'Promotes organic farming through cluster approach. Provides financial assistance for certification, organic input production, and marketing.',
+        'benefit_amount': '₹50,000/hectare over 3 years for organic farming. Includes PGS-India certification support and marketing assistance.',
+        'eligibility': 'Groups of 50 farmers (cluster) with minimum 50 acres land. Areas not under organic farming before.',
+        'how_to_apply': '1. Form farmer group (50 farmers, 50 acres)  2. Apply through District Agriculture Officer  3. Prepare organic farming plan  4. Funds released in 3 installments',
+        'website': 'https://pgsindia-ncof.gov.in',
+        'category': 'Organic Farming',
+        'icon': '🌿',
+    },
+    {
+        'id': 'rkvy',
+        'name': 'RKVY',
+        'full_name': 'Rashtriya Krishi Vikas Yojana',
+        'ministry': 'Ministry of Agriculture & Farmers Welfare',
+        'description': 'Provides funds to states for agricultural development projects including infrastructure, mechanization, and technology adoption.',
+        'benefit_amount': 'Grants for farm infrastructure, equipment subsidy (up to 50%), training programs.',
+        'eligibility': 'Individual farmers through state government projects. Contact District Agriculture Department for ongoing schemes.',
+        'how_to_apply': '1. Contact District Agriculture Officer  2. Apply for specific component (mechanization/infrastructure/horticulture)  3. Subsidy credited directly to bank account',
+        'website': 'https://rkvy.nic.in',
+        'category': 'Agricultural Development',
+        'icon': '🏗️',
+    },
+]

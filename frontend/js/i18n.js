@@ -33,6 +33,18 @@ const translations = {
     'nav.cropDoctor': {
         en: '🩺 Crop Doctor', te: '🩺 పంట వైద్యుడు', hi: '🩺 फसल डॉक्टर', mr: '🩺 पीक डॉक्टर'
     },
+    'nav.carbon': {
+        en: '🌍 Carbon', te: '🌍 కార్బన్', hi: '🌍 कार्बन', mr: '🌍 कार्बन'
+    },
+    'nav.chatbot': {
+        en: '💬 Chatbot', te: '💬 చాట్‌బాట్', hi: '💬 चैटबॉट', mr: '💬 चॅटबॉट'
+    },
+    'nav.cropCalendar': {
+        en: '🗓️ Crop Calendar', te: '🗓️ పంట క్యాలెండర్', hi: '🗓️ फसल कैलेंडर', mr: '🗓️ पीक कॅलेंडर'
+    },
+    'nav.schemes': {
+        en: '🏛️ Schemes', te: '🏛️ పథకాలు', hi: '🏛️ योजनाएं', mr: '🏛️ योजना'
+    },
 
     // ========== HERO SECTION ==========
     'hero.badge': {
@@ -137,6 +149,42 @@ const translations = {
         te: 'పంట ఆకు ఫోటో అప్‌లోడ్ చేయండి, AI వెంటనే వ్యాధులను గుర్తించి, మందుల సిఫార్సులతో చికిత్స ప్రణాళికలను సూచిస్తుంది.',
         hi: 'फसल की पत्ती की फोटो अपलोड करें और AI तुरंत बीमारियों का पता लगाएगा और दवा सिफारिशों के साथ उपचार योजना सुझाएगा।',
         mr: 'पिकाच्या पानाचा फोटो अपलोड करा आणि AI त्वरित रोग ओळखून औषध शिफारशींसह उपचार योजना सुचवेल.'
+    },
+    'feature.carbon.title': {
+        en: 'Carbon Footprint Estimator', te: 'కార్బన్ ఫుట్‌ప్రింట్ అంచనా', hi: 'कार्बन फुटप्रिंट अनुमान', mr: 'कार्बन फूटप्रिंट अंदाज'
+    },
+    'feature.carbon.desc': {
+        en: 'Calculate your farm\'s carbon emissions using IPCC-backed data. Get a rating (A–E), breakdown by activity, and actionable suggestions to reduce your footprint.',
+        te: 'IPCC డేటా ఆధారంగా మీ వ్యవసాయ క్షేత్రం యొక్క కార్బన్ ఉద్గారాలను లెక్కించండి. రేటింగ్ (A–E) మరియు తగ్గింపు సూచనలు పొందండి.',
+        hi: 'IPCC डेटा का उपयोग करके अपने खेत के कार्बन उत्सर्जन की गणना करें। रेटिंग (A–E) और कमी के सुझाव प्राप्त करें।',
+        mr: 'IPCC डेटावर आधारित तुमच्या शेताचे कार्बन उत्सर्जन मोजा. रेटिंग (A–E) आणि कमी करण्याचे उपाय मिळवा.'
+    },
+    'feature.chatbot.title': {
+        en: 'AI Farming Chatbot', te: 'AI వ్యవసాయ చాట్‌బాట్', hi: 'AI कृषि चैटबॉट', mr: 'AI शेती चॅटबॉट'
+    },
+    'feature.chatbot.desc': {
+        en: 'Ask questions about crops, soil, weather, and pests in English, Telugu, Hindi, or Marathi. Get instant expert answers.',
+        te: 'పంటలు, నేల, వాతావరణం మరియు పురుగుల గురించి తెలుగు, ఆంగ్లం, హిందీ లేదా మరాఠీలో ప్రశ్నలు అడగండి.',
+        hi: 'फसलों, मिट्टी, मौसम और कीटों के बारे में अंग्रेजी, तेलुगू, हिंदी या मराठी में प्रश्न पूछें।',
+        mr: 'पिके, माती, हवामान आणि किडींबद्दल इंग्रजी, तेलुगू, हिंदी किंवा मराठीत प्रश्न विचारा.'
+    },
+    'feature.cropCalendar.title': {
+        en: 'Crop Calendar', te: 'పంట క్యాలెండర్', hi: 'फसल कैलेंडर', mr: 'पीक कॅलेंडर'
+    },
+    'feature.cropCalendar.desc': {
+        en: 'Region-wise sowing and harvesting windows for 14+ crops. Know exactly when to sow and when to harvest based on your region and season.',
+        te: '14+ పంటలకు ప్రాంతం-వారీ నాటు మరియు కోత విండోలు. మీ ప్రాంతం మరియు సీజన్ ఆధారంగా ఎప్పుడు నాటాలో మరియు కోయాలో తెలుసుకోండి.',
+        hi: '14+ फसलों के लिए क्षेत्र-वार बुवाई और कटाई विंडो। अपने क्षेत्र और मौसम के आधार पर कब बोएं और कटाई करें।',
+        mr: '14+ पिकांसाठी प्रदेश-निहाय पेरणी आणि काढणीचे कालावधी. तुमच्या प्रदेश आणि हंगामानुसार केव्हा पेरायचे ते जाणून घ्या.'
+    },
+    'feature.schemes.title': {
+        en: 'Government Schemes', te: 'ప్రభుత్వ పథకాలు', hi: 'सरकारी योजनाएं', mr: 'सरकारी योजना'
+    },
+    'feature.schemes.desc': {
+        en: 'Explore PM-KISAN, PMFBY, KCC, PM-KUSUM and 8+ real government agriculture schemes. Check eligibility and learn how to apply.',
+        te: 'PM-KISAN, PMFBY, KCC, PM-KUSUM మరియు 8+ నిజమైన ప్రభుత్వ వ్యవసాయ పథకాలను చూడండి. అర్హత తనిఖీ చేయండి మరియు దరఖాస్తు చేయడం నేర్చుకోండి.',
+        hi: 'PM-KISAN, PMFBY, KCC, PM-KUSUM और 8+ असली सरकारी कृषि योजनाओं की खोज करें। पात्रता जांचें और आवेदन करना सीखें।',
+        mr: 'PM-KISAN, PMFBY, KCC, PM-KUSUM आणि 8+ खऱ्या सरकारी कृषी योजना पहा. पात्रता तपासा आणि अर्ज कसा करायचा ते जाणून घ्या.'
     },
     'home.featuresTitle': {
         en: 'Everything a Farmer Needs', te: 'రైతుకు అవసరమైన ప్రతిదీ', hi: 'किसान को जो भी चाहिए', mr: 'शेतकऱ्यांना जे हवे ते सर्व'
@@ -380,6 +428,116 @@ const translations = {
     'cropDoctor.scanAnother': {
         en: '🔄 Scan Another Leaf', te: '🔄 మరొక ఆకును స్కాన్ చేయండి', hi: '🔄 और एक पत्ती स्कैन करें', mr: '🔄 आणखी एक पान स्कॅन करा'
     },
+
+    // ========== CARBON ESTIMATION ==========
+    'carbon.title': {
+        en: 'Carbon Footprint Estimator', te: 'కార్బన్ ఫుట్‌ప్రింట్ అంచనా', hi: 'कार्बन फुटप्रिंट अनुमान', mr: 'कार्बन फूटप्रिंट अंदाज'
+    },
+    'carbon.subtitle': {
+        en: "Calculate your farm's greenhouse gas emissions using IPCC Tier 1 factors for Indian agriculture",
+        te: 'భారత వ్యవసాయానికి IPCC Tier 1 కారకాలు ఉపయోగించి మీ వ్యవసాయ క్షేత్రం యొక్క గ్రీన్‌హౌస్ గ్యాస్ ఉద్గారాలను లెక్కించండి',
+        hi: 'भारतीय कृषि के लिए IPCC Tier 1 कारकों का उपयोग करके अपने खेत के ग्रीनहाउस गैस उत्सर्जन की गणना करें',
+        mr: 'भारतीय शेतीसाठी IPCC Tier 1 घटकांचा वापर करून तुमच्या शेताचे हरितगृह वायू उत्सर्जन मोजा'
+    },
+    'carbon.formTitle': {
+        en: 'Farm Details', te: 'వ్యవసాయ వివరాలు', hi: 'खेत का विवरण', mr: 'शेताचे तपशील'
+    },
+    'carbon.crop': { en: 'Crop', te: 'పంట', hi: 'फसल', mr: 'पीक' },
+    'carbon.area': { en: 'Farm Area', te: 'వ్యవసాయ విస్తీర్ణం', hi: 'खेत का क्षेत्रफल', mr: 'शेताचे क्षेत्र' },
+    'carbon.fertilizer': { en: 'Fertilizer Type', te: 'ఎరువు రకం', hi: 'उर्वरक प्रकार', mr: 'खत प्रकार' },
+    'carbon.fertQty': { en: 'Fertilizer Quantity', te: 'ఎరువు పరిమాణం', hi: 'उर्वरक मात्रा', mr: 'खत प्रमाण' },
+    'carbon.irrigation': { en: 'Irrigation Type', te: 'నీటిపారుదల రకం', hi: 'सिंचाई प्रकार', mr: 'सिंचाई प्रकार' },
+    'carbon.tillage': { en: 'Tillage Method', te: 'దున్నడం పద్ధతి', hi: 'जुताई विधि', mr: 'मशागत पद्धत' },
+    'carbon.residue': { en: 'Crop Residue Management', te: 'పంట అవశేష నిర్వహణ', hi: 'फसल अवशेष प्रबंधन', mr: 'पीक अवशेष व्यवस्थापन' },
+    'carbon.practices': {
+        en: 'Sustainable Practices (select all that apply)', te: 'సుస్థిర పద్ధతులు (వర్తించేవి అన్నీ ఎంచుకోండి)',
+        hi: 'टिकाऊ प्रथाएं (लागू सभी चुनें)', mr: 'शाश्वत पद्धती (लागू असलेल्या सर्व निवडा)'
+    },
+    'carbon.calculate': { en: 'Calculate Carbon Footprint', te: 'కార్బన్ ఫుట్‌ప్రింట్ లెక్కించండి', hi: 'कार्बन फुटप्रिंट की गणना करें', mr: 'कार्बन फूटप्रिंट मोजा' },
+    'carbon.results': { en: 'Your Carbon Results', te: 'మీ కార్బన్ ఫలితాలు', hi: 'आपके कार्बन परिणाम', mr: 'तुमचे कार्बन परिणाम' },
+    'carbon.rating': { en: 'Carbon Rating', te: 'కార్బన్ రేటింగ్', hi: 'कार्बन रेटिंग', mr: 'कार्बन रेटिंग' },
+    'carbon.suggestions': {
+        en: 'Suggestions to Reduce Footprint', te: 'ఫుట్‌ప్రింట్ తగ్గించడానికి సూచనలు',
+        hi: 'फुटप्रिंट कम करने के सुझाव', mr: 'फूटप्रिंट कमी करण्याचे उपाय'
+    },
+    'carbon.totalEmissions': { en: 'Total Emissions', te: 'మొత్తం ఉద్గారాలు', hi: 'कुल उत्सर्जन', mr: 'एकूण उत्सर्जन' },
+    'carbon.perHectare': { en: 'Per Hectare', te: 'హెక్టేరుకు', hi: 'प्रति हेक्टेयर', mr: 'प्रति हेक्टर' },
+    'carbon.sequestration': { en: 'Carbon Sequestered', te: 'కార్బన్ సీక్వెస్ట్రేషన్', hi: 'कार्बन अनुक्रमण', mr: 'कार्बन संचयन' },
+    'carbon.netEmissions': { en: 'Net Emissions', te: 'నికర ఉద్గారాలు', hi: 'शुद्ध उत्सर्जन', mr: 'निव्वळ उत्सर्जन' },
+    'carbon.breakdown': { en: 'Emissions Breakdown', te: 'ఉద్గారాల విభజన', hi: 'उत्सर्जन का विवरण', mr: 'उत्सर्जनाचे तपशील' },
+    'carbon.comparison': { en: 'vs National Average', te: 'జాతీయ సగటుతో పోలిక', hi: 'राष्ट्रीय औसत से तुलना', mr: 'राष्ट्रीय सरासरीशी तुलना' },
+    'carbon.equivalents': { en: 'CO₂ Equivalents', te: 'CO₂ సమానాలు', hi: 'CO₂ समतुल्य', mr: 'CO₂ समतुल्य' },
+    'carbon.equivalent.cars': { en: 'km driven in average car', te: 'సగటు కారులో km ప్రయాణం', hi: 'औसत कार में km की ड्राइव', mr: 'सरासरी गाडीने km प्रवास' },
+    'carbon.equivalent.trees': { en: 'trees to plant to offset (per year)', te: 'అఫ్‌సెట్ చేయడానికి నాటాల్సిన చెట్లు', hi: 'ऑफसेट के लिए पेड़ (प्रति वर्ष)', mr: 'ऑफसेट करण्यासाठी झाडे (वार्षिक)' },
+    'carbon.equivalent.flights': { en: 'hours of domestic flight', te: 'దేశీయ విమాన గంటలు', hi: 'घरेलू उड़ान के घंटे', mr: 'देशांतर्गत उड्डाण तास' },
+    'carbon.download': { en: 'Download Report', te: 'నివేదిక డౌన్‌లోడ్ చేయండి', hi: 'रिपोर्ट डाउनलोड करें', mr: 'अहवाल डाउनलोड करा' },
+    'carbon.dataSource': {
+        en: 'Emission factors based on IPCC AR5 Tier 1 guidelines for Indian agriculture. National averages from DARE/ICAR research.',
+        te: 'భారత వ్యవసాయానికి IPCC AR5 Tier 1 మార్గదర్శకాల ఆధారంగా ఉద్గార కారకాలు.',
+        hi: 'भारतीय कृषि के लिए IPCC AR5 Tier 1 दिशानिर्देशों पर आधारित उत्सर्जन कारक।',
+        mr: 'भारतीय शेतीसाठी IPCC AR5 Tier 1 मार्गदर्शक तत्त्वांवर आधारित उत्सर्जन घटक.'
+    },
+    'carbon.resultsPlaceholder': { en: 'Fill in the form to see results', te: 'ఫలితాలు చూడటానికి ఫారం పూరించండి', hi: 'परिणाम देखने के लिए फॉर्म भरें', mr: 'परिणाम पाहण्यासाठी फॉर्म भरा' },
+    'carbon.resultsPlaceholderDesc': {
+        en: 'Your carbon footprint breakdown and improvement suggestions will appear here',
+        te: 'మీ కార్బన్ ఫుట్‌ప్రింట్ విభజన మరియు మెరుగుదల సూచనలు ఇక్కడ కనిపిస్తాయి',
+        hi: 'आपका कार्बन फुटप्रिंट विवरण और सुधार के सुझाव यहां दिखाई देंगे',
+        mr: 'तुमचे कार्बन फूटप्रिंट तपशील आणि सुधारणा सूचना येथे दिसतील'
+    },
+
+    // ========== CHATBOT ==========
+    'chatbot.title': { en: 'AI Farming Assistant', te: 'AI వ్యవసాయ సహాయకుడు', hi: 'AI कृषि सहायक', mr: 'AI शेती सहाय्यक' },
+    'chatbot.subtitle': {
+        en: 'Ask questions about crops, soil, weather, and pests in any language',
+        te: 'పంటలు, నేల, వాతావరణం మరియు పురుగుల గురించి ఏ భాషలోనైనా ప్రశ్నలు అడగండి',
+        hi: 'किसी भी भाषा में फसलों, मिट्टी, मौसम और कीटों के बारे में प्रश्न पूछें',
+        mr: 'कोणत्याही भाषेत पिके, माती, हवामान आणि किडींबद्दल प्रश्न विचारा'
+    },
+    'chatbot.welcome': {
+        en: "Hello! I'm your Agri-Connect farming assistant 🌾. Ask me about crops, soil, weather, or market prices!",
+        te: 'నమస్కారం! నేను మీ అగ్రి-కనెక్ట్ వ్యవసాయ సహాయకుడిని 🌾. పంటలు, నేల, వాతావరణం లేదా మార్కెట్ ధరల గురించి అడగండి!',
+        hi: 'नमस्ते! मैं आपका अग्री-कनेक्ट कृषि सहायक हूँ 🌾। फसलें, मिट्टी, मौसम या बाज़ार भाव के बारे में पूछें!',
+        mr: 'नमस्कार! मी तुमचा ऍग्री-कनेक्ट शेती सहाय्यक आहे 🌾. पिके, माती, हवामान किंवा बाजारभावाबद्दल विचारा!'
+    },
+    'chatbot.placeholder': { en: 'Ask me anything about farming...', te: 'వ్యవసాయం గురించి ఏదైనా అడగండి...', hi: 'खेती के बारे में कुछ भी पूछें...', mr: 'शेतीबद्दल काहीही विचारा...' },
+    'chatbot.send': { en: 'Send', te: 'పంపు', hi: 'भेजें', mr: 'पाठवा' },
+    'chatbot.langHint': {
+        en: 'Type in English, తెలుగు, हिंदी, or मराठी — auto-detected',
+        te: 'ఆంగ్లం, తెలుగు, హిందీ లేదా మరాఠీలో టైప్ చేయండి — స్వయంచాలకంగా గుర్తించబడుతుంది',
+        hi: 'अंग्रेजी, तेलुगू, हिंदी या मराठी में टाइप करें — स्वचालित रूप से पहचाना जाता है',
+        mr: 'इंग्रजी, तेलुगू, हिंदी किंवा मराठीत टाइप करा — स्वयंचलितपणे ओळखले जाते'
+    },
+
+    // ========== CROP CALENDAR ==========
+    'cropCalendar.title': { en: 'Crop Calendar', te: 'పంట క్యాలెండర్', hi: 'फसल कैलेंडर', mr: 'पीक कॅलेंडर' },
+    'cropCalendar.subtitle': {
+        en: 'Region-wise sowing and harvesting windows for major Indian crops',
+        te: 'ప్రధాన భారతీయ పంటలకు ప్రాంతం-వారీ నాటు మరియు కోత విండోలు',
+        hi: 'प्रमुख भारतीय फसलों के लिए क्षेत्र-वार बुवाई और कटाई विंडो',
+        mr: 'प्रमुख भारतीय पिकांसाठी प्रदेश-निहाय पेरणी आणि काढणीचे कालावधी'
+    },
+    'cropCalendar.region': { en: 'Region', te: 'ప్రాంతం', hi: 'क्षेत्र', mr: 'प्रदेश' },
+    'cropCalendar.season': { en: 'Season', te: 'సీజన్', hi: 'मौसम', mr: 'हंगाम' },
+    'cropCalendar.load': { en: 'Load Calendar', te: 'క్యాలెండర్ లోడ్ చేయండి', hi: 'कैलेंडर लोड करें', mr: 'कॅलेंडर लोड करा' },
+    'cropCalendar.placeholder': {
+        en: 'Select a region and season, then click Load Calendar',
+        te: 'ప్రాంతం మరియు సీజన్ ఎంచుకోండి, తరువాత క్యాలెండర్ లోడ్ చేయండి నొక్కండి',
+        hi: 'क्षेत्र और मौसम चुनें, फिर कैलेंडर लोड करें पर क्लिक करें',
+        mr: 'प्रदेश आणि हंगाम निवडा, नंतर कॅलेंडर लोड करा वर क्लिक करा'
+    },
+
+    // ========== GOVT SCHEMES ==========
+    'schemes.title': { en: 'Government Agriculture Schemes', te: 'ప్రభుత్వ వ్యవసాయ పథకాలు', hi: 'सरकारी कृषि योजनाएं', mr: 'सरकारी कृषी योजना' },
+    'schemes.subtitle': {
+        en: 'Explore real Indian government schemes for farmers — PM-KISAN, PMFBY, KCC, PM-KUSUM and more',
+        te: 'రైతుల కోసం నిజమైన భారతీయ ప్రభుత్వ పథకాలను చూడండి — PM-KISAN, PMFBY, KCC, PM-KUSUM మరియు మరిన్ని',
+        hi: 'किसानों के लिए असली भारतीय सरकारी योजनाओं की खोज करें — PM-KISAN, PMFBY, KCC, PM-KUSUM और अधिक',
+        mr: 'शेतकऱ्यांसाठी खऱ्या भारतीय सरकारी योजना — PM-KISAN, PMFBY, KCC, PM-KUSUM आणि बरेच काही'
+    },
+    'schemes.eligibility': { en: 'Eligibility', te: 'అర్హత', hi: 'पात्रता', mr: 'पात्रता' },
+    'schemes.benefit': { en: 'Benefit', te: 'లాభం', hi: 'लाभ', mr: 'फायदा' },
+    'schemes.apply': { en: 'Apply Now', te: 'ఇప్పుడు దరఖాస్తు చేయండి', hi: 'अभी आवेदन करें', mr: 'आता अर्ज करा' },
+    'schemes.howToApply': { en: 'How to Apply', te: 'దరఖాస్తు ఎలా చేయాలి', hi: 'आवेदन कैसे करें', mr: 'अर्ज कसा करायचा' },
 
     // ========== FOOTER ==========
     'footer.brand': {

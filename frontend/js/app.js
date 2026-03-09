@@ -10,6 +10,10 @@ import { renderWeather, initWeather } from './pages/weather.js';
 import { renderMarket, initMarket } from './pages/market.js';
 import { renderAnalysis, initAnalysis } from './pages/analysis.js';
 import { renderCropDoctor, initCropDoctor } from './pages/cropDoctor.js';
+import { renderCarbon, initCarbon } from './pages/carbon.js';
+import { renderChatbot, initChatbot } from './pages/chatbot.js';
+import { renderCropCalendar, initCropCalendar } from './pages/cropCalendar.js';
+import { renderSchemes, initSchemes } from './pages/schemes.js';
 import { initVoice } from './voice.js';
 import { onLangChange } from './i18n.js';
 
@@ -17,11 +21,15 @@ import { onLangChange } from './i18n.js';
 // ROUTER
 // ============================================
 const routes = {
-    home: { render: renderHome, init: null },
-    analysis: { render: renderAnalysis, init: initAnalysis },
-    market: { render: renderMarket, init: initMarket },
-    weather: { render: renderWeather, init: initWeather },
-    cropDoctor: { render: renderCropDoctor, init: initCropDoctor },
+    home:        { render: renderHome,        init: null },
+    analysis:    { render: renderAnalysis,    init: initAnalysis },
+    market:      { render: renderMarket,      init: initMarket },
+    weather:     { render: renderWeather,     init: initWeather },
+    cropDoctor:  { render: renderCropDoctor,  init: initCropDoctor },
+    carbon:      { render: renderCarbon,      init: initCarbon },
+    chatbot:     { render: renderChatbot,     init: initChatbot },
+    cropCalendar:{ render: renderCropCalendar,init: initCropCalendar },
+    schemes:     { render: renderSchemes,     init: initSchemes },
 };
 
 let currentPage = 'home';

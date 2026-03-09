@@ -26,6 +26,10 @@ export function renderNavbar(activePage = '') {
         <li><a href="#" data-navigate="market" class="${activePage === 'market' ? 'active' : ''}">${t('nav.market')}</a></li>
         <li><a href="#" data-navigate="weather" class="${activePage === 'weather' ? 'active' : ''}">${t('nav.weather')}</a></li>
         <li><a href="#" data-navigate="cropDoctor" class="${activePage === 'cropDoctor' ? 'active' : ''}">${t('nav.cropDoctor')}</a></li>
+        <li><a href="#" data-navigate="carbon" class="${activePage === 'carbon' ? 'active' : ''}">${t('nav.carbon')}</a></li>
+        <li><a href="#" data-navigate="chatbot" class="${activePage === 'chatbot' ? 'active' : ''}">${t('nav.chatbot')}</a></li>
+        <li><a href="#" data-navigate="cropCalendar" class="${activePage === 'cropCalendar' ? 'active' : ''}">${t('nav.cropCalendar')}</a></li>
+        <li><a href="#" data-navigate="schemes" class="${activePage === 'schemes' ? 'active' : ''}">${t('nav.schemes')}</a></li>
       </ul>
       <div class="navbar-right">
         <select class="lang-selector" id="lang-selector" title="Language">

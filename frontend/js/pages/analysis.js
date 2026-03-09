@@ -318,19 +318,29 @@ function goToStep(step) {
 }
 
 async function submitAnalysis() {
-  // Collect soil data (fallback to random realistic values if empty to show variety)
-  const rand = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-  const randF = (min, max) => parseFloat((Math.random() * (max - min) + min).toFixed(1));
-
   collectedData.soil_type = document.getElementById('w-soil-type')?.value;
-  collectedData.N = parseFloat(document.getElementById('w-n')?.value) || rand(20, 120);
-  collectedData.P = parseFloat(document.getElementById('w-p')?.value) || rand(10, 130);
-  collectedData.K = parseFloat(document.getElementById('w-k')?.value) || rand(15, 190);
-  collectedData.ph = parseFloat(document.getElementById('w-ph')?.value) || randF(5.0, 8.0);
-  collectedData.rainfall = parseFloat(document.getElementById('w-rainfall')?.value) || rand(60, 250);
-  collectedData.soil_moisture = parseFloat(document.getElementById('w-moisture')?.value) || rand(30, 70);
-  collectedData.organic_carbon = parseFloat(document.getElementById('w-oc')?.value) || randF(0.5, 1.8);
-  collectedData.ec = parseFloat(document.getElementById('w-ec')?.value) || randF(0.2, 0.8);
+
+  // Validate and collect required soil fields — no random fallbacks
+  const fieldValidations = [
+    { id: 'w-n',        key: 'N',              label: 'Nitrogen (N)',        parse: parseFloat },
+    { id: 'w-p',        key: 'P',              label: 'Phosphorus (P)',      parse: parseFloat },
+    { id: 'w-k',        key: 'K',              label: 'Potassium (K)',       parse: parseFloat },
+    { id: 'w-ph',       key: 'ph',             label: 'Soil pH',             parse: parseFloat },
+    { id: 'w-rainfall', key: 'rainfall',       label: 'Rainfall',            parse: parseFloat },
+    { id: 'w-moisture', key: 'soil_moisture',  label: 'Soil Moisture',       parse: parseFloat },
+    { id: 'w-oc',       key: 'organic_carbon', label: 'Organic Carbon',      parse: parseFloat },
+    { id: 'w-ec',       key: 'ec',             label: 'Electrical Conductivity', parse: parseFloat },
+  ];
+
+  for (const field of fieldValidations) {
+    const raw = document.getElementById(field.id)?.value?.trim();
+    const val = field.parse(raw);
+    if (!raw || isNaN(val)) {
+      showToast(`Please fill in ${field.label} value`, 'error');
+      return;
+    }
+    collectedData[field.key] = val;
+  }
 
   goToStep(4);
 
