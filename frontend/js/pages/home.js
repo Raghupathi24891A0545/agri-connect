@@ -95,6 +95,30 @@ export function renderHome() {
           <h3>${t('feature.voice.title')}</h3>
           <p>${t('feature.voice.desc')}</p>
         </div>
+
+        <div class="feature-card" data-navigate="carbon">
+          <div class="feature-icon">🌍</div>
+          <h3>${t('feature.carbon.title')}</h3>
+          <p>${t('feature.carbon.desc')}</p>
+        </div>
+
+        <div class="feature-card" data-navigate="chatbot">
+          <div class="feature-icon">💬</div>
+          <h3>${t('feature.chatbot.title')}</h3>
+          <p>${t('feature.chatbot.desc')}</p>
+        </div>
+
+        <div class="feature-card" data-navigate="cropCalendar">
+          <div class="feature-icon">🗓️</div>
+          <h3>${t('feature.cropCalendar.title')}</h3>
+          <p>${t('feature.cropCalendar.desc')}</p>
+        </div>
+
+        <div class="feature-card" data-navigate="schemes">
+          <div class="feature-icon">🏛️</div>
+          <h3>${t('feature.schemes.title')}</h3>
+          <p>${t('feature.schemes.desc')}</p>
+        </div>
       </div>
     </section>
   `;
